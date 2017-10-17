@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NeuralNetwork.Models
 {
     public class BaseNeuron<T>
     {
-        public List<double> Weights { get; set; }
+        public List<BaseDendrite<T>> Dendrites { get; set; }
 
-        public T Value { get; set; }
+        public Func<T> Akson { get; set; }
     }
 }
