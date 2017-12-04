@@ -1,0 +1,15 @@
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NN.Presentation.Form.exe.config
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NN.Presentation.Form.exe
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NN.Presentation.Form.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\obj\Debug\NN.Presentation.Form.Properties.Resources.resources
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\obj\Debug\NN.Presentation.Form.csproj.GenerateResource.Cache
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\obj\Debug\NN.Presentation.Form.exe
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\obj\Debug\NN.Presentation.Form.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NeuralNetwork.API.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NeuralNetwork.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NeuralNetwork.API.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\NeuralNetwork.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\obj\Debug\NN.Presentation.Form.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NN.Presentation.Form\obj\Debug\NN.Presentation.Form.NN.resources
