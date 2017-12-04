@@ -1,4 +1,0 @@
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NeuralNetwork\bin\Debug\NeuralNetwork.dll
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NeuralNetwork\bin\Debug\NeuralNetwork.pdb
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NeuralNetwork\obj\Debug\NeuralNetwork.dll
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\NN.Interpolation\NeuralNetwork\obj\Debug\NeuralNetwork.pdb

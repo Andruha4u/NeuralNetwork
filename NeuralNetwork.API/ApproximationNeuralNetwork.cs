@@ -1,4 +1,5 @@
-﻿using NeuralNetwork.Interfaces;
+﻿using NeuralNetwork.API.Extentions;
+using NeuralNetwork.Interfaces;
 using NeuralNetwork.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace NeuralNetwork.API
                                               INeuralNetwork<BaseNeuralParameter<double>, BaseNeuralParameter<double>>
     {
         private int _inputsCount { get; set; }
+        private double _learningRate { get; set; }
 
         public override List<BaseLayer<double, double>> Layers { get; set; }
 
@@ -33,6 +35,7 @@ namespace NeuralNetwork.API
         {
             Layers = layers;
             InputsCount = inputsCount;
+            _learningRate = 0.8;
         }
 
         public BaseNeuralParameter<double> Execute(BaseNeuralParameter<double> input)
@@ -76,16 +79,63 @@ namespace NeuralNetwork.API
                 });
             });
 
-            return new BaseNeuralParameter<double>(Layers.Last().Neurons.Select(neuron => neuron.Akson()).ToList());
+            return new BaseNeuralParameter<double>(Layers.Last().Neurons.Select(neuron => neuron.Akson()).ToArray());
         }
 
-        public void Train(BaseNeuralParameter<double> input, BaseNeuralParameter<double> output)
+        public void Train(List<BaseNeuralParameter<double>> inputs, List<BaseNeuralParameter<double>> outputs)
         {
-            BaseNeuralParameter<double> actualResult = Execute(input);
+            //double startApproximation = 0.03507;
+            double startApproximation = 0.0370651;
+            for (int inputInd = 0; inputInd < inputs.Count; inputInd++)
+            {
+                BaseNeuralParameter<double> actualResult = Execute(inputs[inputInd]);
 
-            // TODO: change weights to make smaller error
+                Layers.ForEach(layer =>
+                {
+                    layer.Neurons.ForEach(neuron =>
+                    {
+                        foreach (var dendrite in neuron.Dendrites)
+                        {
+                            dendrite.Weight = startApproximation;
 
-            throw new NotImplementedException();
+                            BaseNeuralParameter<double> bestWeightApproximation = this.Execute(inputs[inputInd]);
+                            double step = 0.1;
+                            dendrite.Weight = startApproximation - step;
+                            var resultL = this.Execute(inputs[inputInd]);
+
+                            dendrite.Weight = startApproximation + step;
+                            var resultR = this.Execute(inputs[inputInd]);
+
+                            if (resultL.Collection.Decrease(bestWeightApproximation.Collection, outputs[inputInd].Collection))
+                            {
+                                bestWeightApproximation = resultL;
+                                step = -step;
+                            }
+                            else if (resultR.Collection.Decrease(bestWeightApproximation.Collection, outputs[inputInd].Collection))
+                            {
+                                bestWeightApproximation = resultR;
+                            }
+                            else
+                            {
+                                dendrite.Weight = startApproximation;
+                                continue;
+                            }
+
+                            int insightsCount = 0;
+                            BaseNeuralParameter<double> newBestWeightApproximation = new BaseNeuralParameter<double>(bestWeightApproximation.Collection.ToArray());
+                            do
+                            {
+                                if (insightsCount > 10000) break;
+                                bestWeightApproximation = new BaseNeuralParameter<double>(newBestWeightApproximation.Collection.ToArray());
+                                dendrite.Weight += step;
+                                newBestWeightApproximation = this.Execute(inputs[inputInd]);
+                                insightsCount++;
+                            } while (newBestWeightApproximation.Collection.Decrease(bestWeightApproximation.Collection, outputs[inputInd].Collection));
+                            dendrite.Weight -= step;
+                        };
+                    });
+                });
+            }
         }
     }
 }

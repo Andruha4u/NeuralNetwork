@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
+
 using WindowsForm = System.Windows.Forms.Form;
 
 namespace NN.Presentation.Form
@@ -14,7 +15,7 @@ namespace NN.Presentation.Form
     public partial class NN : WindowsForm
     {
         ApproximationNeuralNetwork _neuralNetwork;
-        Func<double, double> _function = (x) => 2 * x * x;
+        Func<double, double> _function = (x) => 2 * x * x + x;
 
 
         public NN()
@@ -30,10 +31,23 @@ namespace NN.Presentation.Form
             string expected = "Expected";
             string currentChartArea = "CurrentChartArea";
 
+            
+
+            if (NNChart.Series.Any(s => s.Name == actual))
+            {
+                NNChart.Series.Remove(NNChart.Series[actual]);
+            }
+            if (NNChart.Series.Any(s => s.Name == expected))
+            {
+                NNChart.Series.Remove(NNChart.Series[expected]);
+            }
+
             NNChart.Series.Add(actual);
             NNChart.Series.Add(expected);
-            NNChart.Series[actual].ChartType = SeriesChartType.FastLine;
+            NNChart.Series[actual].ChartType = SeriesChartType.Line;
             NNChart.Series[expected].ChartType = SeriesChartType.FastLine;
+            NNChart.Series[actual].BorderWidth = 3;
+            NNChart.Series[expected].BorderWidth = 3;
             NNChart.Series[actual].ChartArea = currentChartArea;
             NNChart.Series[expected].ChartArea = currentChartArea;
 

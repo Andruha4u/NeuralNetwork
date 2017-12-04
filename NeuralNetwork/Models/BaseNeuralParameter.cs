@@ -4,9 +4,9 @@ namespace NeuralNetwork.Models
 {
     public class BaseNeuralParameter<TItem>
     {
-        public BaseNeuralParameter(List<TItem> collection)
+        public BaseNeuralParameter(params TItem[] collection)
         {
-            Collection = collection;
+            Collection = new List<TItem>(collection);
         }
 
         public List<TItem> Collection { get; set; }

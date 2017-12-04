@@ -1,6 +1,8 @@
 ﻿using NeuralNetwork.API;
+using NeuralNetwork.API.Models;
 using NeuralNetwork.Models;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace NN.Presentation.Form.Extentions
@@ -16,6 +18,7 @@ namespace NN.Presentation.Form.Extentions
             nn.Layers.ForEach((layer) =>
             {
                 TreeNode lnode = new TreeNode($"Layer[{layerNum}]");
+                lnode.Nodes.Add($"[{ActivationFunctionDefinition.Function.First(f => f.Value == layer.ActivationFunction).Key.ToString()}] Activation function");
                 layerNum++;
                 int neuronNum = 1;
                 layer.Neurons.ForEach((neuron) =>

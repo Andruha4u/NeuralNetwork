@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NN.Interpolation", "NN.Interpolation\NN.Interpolation.csproj", "{92F36DE0-A690-4D0A-9D60-9825BD983496}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NN.Presentation.Console", "NN.Interpolation\NN.Presentation.Console.csproj", "{92F36DE0-A690-4D0A-9D60-9825BD983496}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork", "NeuralNetwork\NeuralNetwork.csproj", "{03B23E8A-4EF4-4BB1-B583-0BA2FF692944}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork.Approximation.API", "NeuralNetwork.API\NeuralNetwork.Approximation.API.csproj", "{0AB08668-C5F0-43C3-915E-57295E4BBC12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NN.Presentation.Form", "NN.Presentation.Form\NN.Presentation.Form.csproj", "{D0ACF14B-8DA1-4F56-9193-8E3C016416E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0AB08668-C5F0-43C3-915E-57295E4BBC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB08668-C5F0-43C3-915E-57295E4BBC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB08668-C5F0-43C3-915E-57295E4BBC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0ACF14B-8DA1-4F56-9193-8E3C016416E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0ACF14B-8DA1-4F56-9193-8E3C016416E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0ACF14B-8DA1-4F56-9193-8E3C016416E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0ACF14B-8DA1-4F56-9193-8E3C016416E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
