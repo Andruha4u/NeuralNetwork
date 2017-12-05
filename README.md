@@ -2,7 +2,7 @@
 Here is basic Neural Network interfaces and specific one for function approximation.
 For training was used Monte Carlo method.
 
-`
+``
     public class BaseLayer<TInput, TOutput>
     {
         public Func<TInput, TOutput> ActivationFunction { get; set; }
@@ -38,4 +38,4 @@ For training was used Monte Carlo method.
     
     public class ApproximationNeuralNetwork : BaseNeuralNetwork<double, double>,
                                               INeuralNetwork<BaseNeuralParameter<double>, BaseNeuralParameter<double>>
-`
+``
