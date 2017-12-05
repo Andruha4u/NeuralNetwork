@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApproximationNeuralNetwork.cs" />
+    <Compile Include="ApproximationNeuralNetworkExecutor.cs" />
+    <Compile Include="MonteCarloNeuralNetworkTrainer.cs" />
     <Compile Include="Extentions\CollectionExtentions.cs" />
     <Compile Include="Mappers\NeuralNetworkMapper.cs" />
     <Compile Include="Models\ActivationFunctionType.cs" />

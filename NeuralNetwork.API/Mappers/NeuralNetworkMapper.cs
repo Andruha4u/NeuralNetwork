@@ -50,7 +50,10 @@ namespace NeuralNetwork.API.Mappers
                 );
             });
 
-            return new ApproximationNeuralNetwork(layers, nNSetup.InputsCount);
+            var executor = new ApproximationNeuralNetworkExecutor(ref layers);
+            var trainer = new MonteCarloNeuralNetworkTrainer(ref layers, executor.Execute);
+
+            return new ApproximationNeuralNetwork(layers, nNSetup.InputsCount, trainer, executor);
         }
     }
 }
