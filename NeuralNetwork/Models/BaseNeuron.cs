@@ -7,7 +7,7 @@ namespace NeuralNetwork.Models
     {
         public List<BaseDendrite<T>> Dendrites { get; set; }
 
-        public Func<T> Akson { get; set; } = () => default(T);
+        public Func<List<T>, T> Akson { get; set; } 
 
         public T Delta { get; set; }
     }

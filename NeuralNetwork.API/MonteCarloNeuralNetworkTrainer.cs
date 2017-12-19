@@ -3,73 +3,93 @@ using NeuralNetwork.Interfaces;
 using NeuralNetwork.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NeuralNetwork.API
 {
+    public class IterationResult
+    {
+        public List<double> Weights { get; set; }
+        public double Energy { get; set; }
+    }
+
     public class MonteCarloNeuralNetworkTrainer : ITrainable<BaseNeuralParameter<double>, BaseNeuralParameter<double>>
     {
         private readonly Func<BaseNeuralParameter<double>, BaseNeuralParameter<double>> Execute;
         private readonly List<BaseLayer<double, double>> Layers;
+        private IterationResult _BestPossibleWeigths;
 
         public MonteCarloNeuralNetworkTrainer(ref List<BaseLayer<double, double>> layers, Func<BaseNeuralParameter<double>, BaseNeuralParameter<double>> executor)
         {
             Execute = executor;
+            
             Layers = layers;
         }
 
-        public void Train(List<BaseNeuralParameter<double>> inputs, List<BaseNeuralParameter<double>> outputs)
+        public void Train(List<BaseNeuralParameter<double>> input, List<BaseNeuralParameter<double>> output)
         {
-            double startApproximation = 0.0370651;
-            for (int inputInd = 0; inputInd < inputs.Count; inputInd++)
+            double _startPoint = -2;
+            double _endPoint = 2;
+            double _step = 1;
+
+            List<BaseDendrite<double>> dendrides = Layers.SelectMany(layer => layer.Neurons.SelectMany(neurone => neurone.Dendrites)).ToList();
+            dendrides.ForEach(d =>
             {
-                BaseNeuralParameter<double> actualResult = Execute(inputs[inputInd]);
+                d.Weight = _startPoint;
+            });
 
-                Layers.ForEach(layer =>
+            _BestPossibleWeigths = new IterationResult
+            {
+                Weights = dendrides.Select(el => el.Weight).ToList(),
+                Energy = RegressionEnergyFunctional(input, output)
+            };
+
+            for (int i = 0; i < dendrides.Count; i++)
+            {
+                var dendride = dendrides[i];
+                dendride.Weight += _step;
+
+                var currEnergy = RegressionEnergyFunctional(input, output);
+
+                // Resertting energy is it is better the particular one
+                if (currEnergy < _BestPossibleWeigths.Energy)
                 {
-                    layer.Neurons.ForEach(neuron =>
+                    _BestPossibleWeigths.Weights.Clear();
+                    _BestPossibleWeigths.Energy = currEnergy;
+                    _BestPossibleWeigths.Weights = dendrides.Select(el => el.Weight).ToList();
+                }
+
+                if (dendride.Weight > _endPoint)
+                {
+                    // For all dendrides bedore and particular one set start weight
+                    dendrides.GetRange(0, i + 1).ForEach(d =>
                     {
-                        foreach (var dendrite in neuron.Dendrites)
-                        {
-                            dendrite.Weight = startApproximation;
-
-                            BaseNeuralParameter<double> bestWeightApproximation = this.Execute(inputs[inputInd]);
-                            double step = 0.1;
-                            dendrite.Weight = startApproximation - step;
-                            var resultL = this.Execute(inputs[inputInd]);
-
-                            dendrite.Weight = startApproximation + step;
-                            var resultR = this.Execute(inputs[inputInd]);
-
-                            if (resultL.Collection.Decrease(bestWeightApproximation.Collection, outputs[inputInd].Collection))
-                            {
-                                bestWeightApproximation = resultL;
-                                step = -step;
-                            }
-                            else if (resultR.Collection.Decrease(bestWeightApproximation.Collection, outputs[inputInd].Collection))
-                            {
-                                bestWeightApproximation = resultR;
-                            }
-                            else
-                            {
-                                dendrite.Weight = startApproximation;
-                                continue;
-                            }
-
-                            int insightsCount = 0;
-                            BaseNeuralParameter<double> newBestWeightApproximation = new BaseNeuralParameter<double>(bestWeightApproximation.Collection.ToArray());
-                            do
-                            {
-                                if (insightsCount > 10000) break;
-                                bestWeightApproximation = new BaseNeuralParameter<double>(newBestWeightApproximation.Collection.ToArray());
-                                dendrite.Weight += step;
-                                newBestWeightApproximation = this.Execute(inputs[inputInd]);
-                                insightsCount++;
-                            } while (newBestWeightApproximation.Collection.Decrease(bestWeightApproximation.Collection, outputs[inputInd].Collection));
-                            dendrite.Weight -= step;
-                        };
+                        d.Weight = _startPoint;
                     });
-                });
+                }
+                else
+                {
+                    // Go to start
+                    i = -1;
+                }
             }
+
+            for (int i = 0; i < dendrides.Count; i++)
+            {
+                dendrides[i].Weight = _BestPossibleWeigths.Weights[i];
+            }
+        }
+
+        private double RegressionEnergyFunctional(List<BaseNeuralParameter<double>> input, List<BaseNeuralParameter<double>> output)
+        {
+            double energy = 0;
+            for (int i = 0; i < input.Count; i++)
+            {
+                double element = output[i].Collection.Zip(Execute(input[i]).Collection, (a, b) => a - b).First();
+                energy += Math.Pow(element, 2);
+            }
+
+            return energy;
         }
     }
 }

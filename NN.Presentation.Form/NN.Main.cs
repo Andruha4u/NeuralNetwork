@@ -15,7 +15,7 @@ namespace NN.Presentation.Form
     public partial class NN : WindowsForm
     {
         ApproximationNeuralNetwork _neuralNetwork;
-        Func<double, double> _function = (x) => 2 * x * x + x;
+        Func<double, double> _function = (x) => x;
 
 
         public NN()
@@ -67,7 +67,7 @@ namespace NN.Presentation.Form
 
             
 
-            for (double i = 1; i < 10; i++)
+            for (double i = 1; i < 20; i++)
             {
                 inputs.Add(new BaseNeuralParameter<double>(Enumerable.Repeat(i, _neuralNetwork.InputsCount).ToArray()));
                 outputs.Add(new BaseNeuralParameter<double>(Enumerable.Repeat(_function(i), _neuralNetwork.InputsCount).ToArray()));

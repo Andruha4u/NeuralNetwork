@@ -16,154 +16,6 @@
               "Weight": 0.1
             }
           ]
-        },
-        {
-          "Dendrites": [
-            {
-              "Weight": 0.1
-            }
-          ]
-        },
-        {
-          "Dendrites": [
-            {
-              "Weight": 0.1
-            }
-          ]
-        }
-      ],
-      "Bias": 0,
-      "ActivationFunctionType": 2
-    },
-    {
-      "Neurons": [
-        {
-          "Dendrites": [
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 0
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 1
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 2
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 3
-              }
-            }
-          ]
-        },
-        {
-          "Dendrites": [
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 0
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 1
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 2
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 3
-              }
-            }
-          ]
-        },
-        {
-          "Dendrites": [
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 0
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 1
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 2
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 3
-              }
-            }
-          ]
-        },
-        {
-          "Dendrites": [
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 0
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 1
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 2
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 0,
-                "NeuronId": 3
-              }
-            }
-          ]
         }
       ],
       "Bias": 0,
@@ -176,29 +28,15 @@
             {
               "Weight": 0.1,
               "PreviousNeuron": {
-                "LayerId": 1,
+                "LayerId": 0,
                 "NeuronId": 0
               }
             },
             {
               "Weight": 0.1,
               "PreviousNeuron": {
-                "LayerId": 1,
+                "LayerId": 0,
                 "NeuronId": 1
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 1,
-                "NeuronId": 2
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 1,
-                "NeuronId": 3
               }
             }
           ]
@@ -208,29 +46,15 @@
             {
               "Weight": 0.1,
               "PreviousNeuron": {
-                "LayerId": 1,
+                "LayerId": 0,
                 "NeuronId": 0
               }
             },
             {
               "Weight": 0.1,
               "PreviousNeuron": {
-                "LayerId": 1,
+                "LayerId": 0,
                 "NeuronId": 1
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 1,
-                "NeuronId": 2
-              }
-            },
-            {
-              "Weight": 0.1,
-              "PreviousNeuron": {
-                "LayerId": 1,
-                "NeuronId": 3
               }
             }
           ]
@@ -246,14 +70,14 @@
             {
               "Weight": 0.1,
               "PreviousNeuron": {
-                "LayerId": 2,
+                "LayerId": 1,
                 "NeuronId": 0
               }
             },
             {
               "Weight": 0.1,
               "PreviousNeuron": {
-                "LayerId": 2,
+                "LayerId": 1,
                 "NeuronId": 1
               }
             }
